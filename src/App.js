@@ -1,14 +1,10 @@
 function App() {
   return (
     <div>
-      <div className="mt-10 p-6">
-        <h2 className="text-4xl font-bold text-blue-600">
-          Empowering Minds & Inspiring Change
-        </h2>
-        <p className="mt-4 text-gray-600">
-          As a passionate educator and lifelong learner...
-        </p>
+      <div className="mt-100 p-10 bg-blue-500 text-white text-3xl font-bold">
+        Tailwind is working 🎉
       </div>
+
     </div>
   );
 }
