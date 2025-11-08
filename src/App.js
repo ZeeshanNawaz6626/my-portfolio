@@ -1,10 +1,13 @@
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Skills from "./components/Skills";
+
 function App() {
   return (
-    <div>
-      <div className="mt-100 p-10 bg-blue-500 text-white text-3xl font-bold">
-        Tailwind is working 🎉
-      </div>
-
+    <div className="bg-[#0B1120] text-white min-h-screen">
+      <Navbar />
+      <Hero />
+      <Skills />
     </div>
   );
 }
