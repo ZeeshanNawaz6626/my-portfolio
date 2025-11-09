@@ -3,113 +3,226 @@ import { useState } from "react";
 export default function SkillsSection() {
   const [activeTab, setActiveTab] = useState("All Skills");
 
-  const tabs = ["All Skills", "Development", "Security", "Design"];
+  const tabs = ["All Skills", "Development", "Infrastructure", "Security"];
 
   const skills = [
     {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      ),
+      icon: "globe",
       title: "Web Development",
-      description: "Creating modern, responsive websites and applications with cutting-edge technologies.",
-      tags: ["React", "Node.js", "TypeScript"],
+      description:
+        "Modern, responsive UI components and starter templates built with the latest web technologies.",
+      tags: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
       category: "Development",
-      color: "text-blue-500"
+      color: "blue",
     },
     {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-        </svg>
-      ),
+      icon: "cloud",
       title: "Cloud Infrastructure",
-      description: "Infrastructure as Code templates and cloud deployment solutions.",
-      tags: ["AWS", "Azure", "Docker"],
-      category: "Development",
-      color: "text-green-500"
+      description:
+        "Pre-built infrastructure templates and IaC (Infrastructure as Code) scripts for scalable deployment.",
+      tags: ["AWS", "Azure", "Docker", "Kubernetes"],
+      category: "Infrastructure",
+      color: "purple",
     },
     {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-        </svg>
-      ),
+      icon: "shield",
       title: "Cybersecurity Services",
-      description: "Comprehensive asset protection and security auditing services.",
-      tags: ["Penetration Testing", "Security Audit", "Vulnerability Assessment"],
+      description: "Comprehensive digital asset protection solutions",
+      tags: ["Penetration Testing", "Security Audits", "Threat Modeling"],
       category: "Security",
-      color: "text-red-500"
+      color: "green",
     },
     {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      ),
-      title: "UI/UX Design",
-      description: "Creating beautiful and intuitive user interfaces and experiences.",
-      tags: ["Figma", "Adobe XD", "Prototyping"],
-      category: "Design",
-      color: "text-purple-500"
-    },
-    {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      ),
-      title: "Mobile Development",
-      description: "Building cross-platform mobile applications for iOS and Android.",
-      tags: ["React Native", "Flutter", "Swift"],
+      icon: "code",
+      title: "Full Stack Development",
+      description:
+        "End-to-end codebase templates and workflow automations for complex full stack applications.",
+      tags: ["JavaScript", "Python", "SQL", "GraphQL"],
       category: "Development",
-      color: "text-blue-500"
+      color: "amber",
     },
     {
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-        </svg>
-      ),
-      title: "Network Security",
-      description: "Securing network infrastructure and implementing security protocols.",
-      tags: ["Firewall", "VPN", "Network Monitoring"],
-      category: "Security",
-      color: "text-red-500"
-    }
+      icon: "network",
+      title: "Network Automation",
+      description:
+        "Automated configuration scripts and templates for modern network management.",
+      tags: ["VPNs", "Firewalls", "Load Balancing"],
+      category: "Infrastructure",
+      color: "rose",
+    },
+    {
+      icon: "chart",
+      title: "Data Analytics",
+      description:
+        "Self-service dashboards, scripts, and templates for actionable data analysis.",
+      tags: ["Dashboards", "Google Analytics", "Metrics"],
+      category: "Development",
+      color: "cyan",
+    },
   ];
 
-  const filteredSkills = activeTab === "All Skills" 
-    ? skills 
-    : skills.filter(skill => skill.category === activeTab);
+  const filteredSkills =
+    activeTab === "All Skills"
+      ? skills
+      : skills.filter((skill) => skill.category === activeTab);
+
+  const getIcon = (iconName) => {
+    const icons = {
+      globe: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+          <path d="M2 12h20"></path>
+        </svg>
+      ),
+      cloud: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+        </svg>
+      ),
+      shield: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+        </svg>
+      ),
+      code: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m16 18 6-6-6-6"></path>
+          <path d="m8 6-6 6 6 6"></path>
+        </svg>
+      ),
+      network: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+          <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+          <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+          <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+          <path d="M12 12V8"></path>
+        </svg>
+      ),
+      chart: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
+          <path d="M18 17V9"></path>
+          <path d="M13 17V5"></path>
+          <path d="M8 17v-3"></path>
+        </svg>
+      ),
+    };
+    return icons[iconName];
+  };
+
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: {
+        icon: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+      },
+      purple: {
+        icon: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
+      },
+      green: {
+        icon: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
+      },
+      amber: {
+        icon: "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400",
+      },
+      rose: {
+        icon: "bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400",
+      },
+      cyan: {
+        icon: "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400",
+      },
+    };
+    return colors[color];
+  };
 
   return (
-    <section className="px-4 sm:px-6 md:px-8 lg:px-10 py-12 md:py-16 lg:py-20 bg-[#0D1426]">
+    <section className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 md:py-12">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-8 md:mb-10">
           <span className="inline-block bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-xs md:text-sm font-medium mb-3">
-            What I Do
+            Expertise
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 text-slate-900 dark:text-white">
             Skills <span className="text-blue-500">& Services Offered</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Specialized expertise across multiple domains to help you achieve your goals
+          <p className="mx-auto mb-6 max-w-2xl text-sm md:text-base text-slate-600 dark:text-slate-400">
+            Specialized expertise across multiple domains to help you achieve
+            your technical goals and secure your digital presence.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-12">
+        <div className="mb-6 flex flex-wrap justify-center gap-2">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all ${
+              className={`rounded-full px-3 py-1.5 text-xs md:text-sm font-medium transition-colors ${
                 activeTab === tab
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                  ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                  : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
               }`}
             >
               {tab}
@@ -118,36 +231,111 @@ export default function SkillsSection() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl hover:border-gray-700 transition-all group"
-            >
-              <div className={`${skill.color} mb-4`}>
-                {skill.icon}
-              </div>
-              <h3 className="text-white font-bold text-xl mb-2 group-hover:text-blue-400 transition">
-                {skill.title}
-              </h3>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                {skill.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {skill.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="bg-gray-800/80 text-gray-300 px-3 py-1 rounded-full text-xs font-medium border border-gray-700"
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredSkills.map((skill, index) => {
+            const colorClasses = getColorClasses(skill.color);
+            return (
+              <div
+                key={index}
+                className="relative group flex flex-col rounded-xl border border-slate-200 bg-white py-4 px-5 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+              >
+                <div
+                  className={`mb-3 flex h-10 w-10 items-center justify-center rounded-lg ${colorClasses.icon}`}
+                >
+                  {getIcon(skill.icon)}
+                </div>
+                <h3 className="mb-1 text-lg font-semibold text-slate-900 dark:text-white">
+                  {skill.title}
+                </h3>
+                <p className="mb-3 flex-1 text-sm text-slate-600 dark:text-slate-400">
+                  {skill.description}
+                </p>
+                <div className="mb-3 flex flex-wrap gap-2">
+                  {skill.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-800 dark:bg-slate-800 dark:text-slate-200"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="mr-1 text-blue-500 dark:text-blue-400"
+                      >
+                        <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                        <path d="m9 11 3 3L22 4"></path>
+                      </svg>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  className="mt-auto inline-flex items-center text-xs md:text-sm font-medium text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                  href={`/service/${skill.title
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                >
+                  Learn more
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="ml-1"
                   >
-                    {tag}
-                  </span>
-                ))}
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  </svg>
+                </a>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        <div class="mt-16 text-center">
+          <p class="mb-6 text-lg text-slate-600 dark:text-slate-400">
+            Need a custom solution for your specific requirements?
+          </p>
+          <a href="/contact">
+            <button
+              data-slot="button"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive shadow-xs h-10 has-[&gt;svg]:px-4 group relative overflow-hidden rounded-lg bg-blue-600 px-8 text-white hover:bg-blue-700"
+            >
+              <span class="relative z-10 flex items-center">
+                Get in Touch
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-arrow-right ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </span>
+            </button>
+          </a>
         </div>
       </div>
     </section>
   );
 }
-

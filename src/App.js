@@ -13,12 +13,18 @@ import Newsletter from "./components/Newsletter";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import Header from "./components/Header";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isContentOpen, setIsContentOpen] = useState(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   const handleAboutHover = () => {
     setIsAboutOpen(!isAboutOpen);
@@ -53,8 +59,11 @@ function App() {
   };
 
   return (
-    <div className="bg-[#0B1120] text-white min-h-screen relative  overflow-x-hidden">
-     
+    <div
+      className={`${isDarkMode ? "bg-[#0B1120]" : "bg-white"} ${
+        isDarkMode ? "text-white" : "text-gray-900"
+      } min-h-screen relative overflow-x-hidden transition-colors duration-300`}
+    >
       <Navbar
         onAboutHover={handleAboutHover}
         onContentHover={handleContentHover}
@@ -64,10 +73,12 @@ function App() {
         isContentOpen={isContentOpen}
         isResourcesOpen={isResourcesOpen}
         isServicesOpen={isServicesOpen}
+        isDarkMode={isDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
-
-      {/* Dropdowns - positioned absolutely below navbar */}
-      <div className="relative z-40">
+      <div className="px-16">
+        {/* Dropdowns - positioned absolutely below navbar */}
+        {/* <div className="relative z-40">
         {isAboutOpen && (
           <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
             <AboutDropdown />
@@ -88,30 +99,30 @@ function App() {
             <ServicesDropdown />
           </div>
         )}
+      </div> */}
+        <Hero isDarkMode={isDarkMode} />
+
+        {/* Skills & Services Section */}
+        <SkillsSection />
+
+        {/* Testimonials Section */}
+        <Testimonials />
+
+        {/* Blog Posts Section */}
+        <BlogPosts />
+
+        {/* Pricing Section */}
+        <Pricing />
+
+        {/* Newsletter Section */}
+        <Newsletter />
+
+        {/* CTA Section */}
+        <CTA />
+
+        {/* Footer */}
+        <Footer />
       </div>
-
-{/* <Hero/>     */}
-
-      {/* Skills & Services Section */}
-      {/* <SkillsSection /> */}
-
-      {/* Testimonials Section */}
-      {/* <Testimonials /> */}
-
-      {/* Blog Posts Section */}
-      {/* <BlogPosts /> */}
-
-      {/* Pricing Section */}
-      {/* <Pricing /> */}
-
-      {/* Newsletter Section */}
-      {/* <Newsletter /> */}
-
-      {/* CTA Section */}
-      {/* <CTA /> */}
-
-      {/* Footer */}
-      {/* <Footer /> */}
     </div>
   );
 }

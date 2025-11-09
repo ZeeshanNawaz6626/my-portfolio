@@ -1,232 +1,530 @@
 import { useState } from "react";
 
 export default function Footer() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle");
 
-  const socialIcons = [
+  const handleSubscribe = async () => {
+    if (!email || !email.includes("@")) {
+      return;
+    }
+
+    setStatus("loading");
+    // Add your newsletter subscription logic here
+    setTimeout(() => {
+      setStatus("success");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 3000);
+    }, 1000);
+  };
+
+  const socialLinks = [
     {
       name: "LinkedIn",
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-        </svg>
-      ),
+      href: "https://linkedin.com/in/hackerwasii",
+      icon: "linkedin",
     },
-    {
-      name: "GitHub",
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-        </svg>
-      ),
-    },
+    { name: "GitHub", href: "https://github.com/evildevill", icon: "github" },
     {
       name: "Facebook",
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      ),
+      href: "https://facebook.com/hackerwasii",
+      icon: "facebook",
     },
     {
       name: "Instagram",
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-        </svg>
-      ),
+      href: "https://instagram.com/wasii_254",
+      icon: "instagram",
     },
     {
       name: "YouTube",
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-        </svg>
-      ),
+      href: "https://www.youtube.com/@hackerwasii?sub_confirmation=1",
+      icon: "youtube",
     },
+    { name: "WhatsApp", href: "https://wa.me/+12048132846", icon: "whatsapp" },
   ];
 
+  const platformLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/service" },
+    { name: "Blog", href: "/blog" },
+    { name: "Courses", href: "/courses" },
+    { name: "Store", href: "/store" },
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "Contact", href: "/contact" },
+  ];
+
+  const resourceLinks = [
+    { name: "Resume", href: "/resume" },
+    { name: "Schedule Call", href: "/schedule-consultation" },
+    { name: "Downloads", href: "/downloads" },
+    { name: "VU Study Material", href: "/vu-study-material" },
+    { name: "Dr. Israr Lectures", href: "/dr-israr" },
+  ];
+
+  const toolLinks = [
+    { name: "Number Lookup", href: "/number-lookup" },
+    { name: "Porn Blocker", href: "/porn-blocker" },
+    { name: "URL Shortener", href: "/dashboard/url-shortener" },
+    { name: "Firewall Bypass", href: "/firewall-bypass-vu" },
+  ];
+
+  const legalLinks = [
+    { name: "Privacy Policy", href: "/legal/privacy-policy" },
+    { name: "Terms of Service", href: "/legal/terms" },
+    { name: "Refund Policy", href: "/legal/refund-policy" },
+    { name: "Cookies Policy", href: "/legal/cookies" },
+  ];
+
+  const getSocialIcon = (iconName) => {
+    const icons = {
+      linkedin: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+          <rect width="4" height="12" x="2" y="9" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      ),
+      github: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+          <path d="M9 18c-4.51 2-5-2-7-2" />
+        </svg>
+      ),
+      facebook: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      ),
+      instagram: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+      ),
+      youtube: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+          <path d="m10 15 5-3-5-3z" />
+        </svg>
+      ),
+      whatsapp: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M10.1 2.182a10 10 0 0 1 3.8 0" />
+          <path d="M13.9 21.818a10 10 0 0 1-3.8 0" />
+          <path d="M17.609 3.72a10 10 0 0 1 2.69 2.7" />
+          <path d="M2.182 13.9a10 10 0 0 1 0-3.8" />
+          <path d="M20.28 17.61a10 10 0 0 1-2.7 2.69" />
+          <path d="M21.818 10.1a10 10 0 0 1 0 3.8" />
+          <path d="M3.721 6.391a10 10 0 0 1 2.7-2.69" />
+          <path d="m6.163 21.117-2.906.85a1 1 0 0 1-1.236-1.169l.965-2.98" />
+        </svg>
+      ),
+    };
+    return icons[iconName];
+  };
+
   return (
-    <footer className="bg-[#0D1426] border-t border-gray-800">
-      <div className="px-4 sm:px-6 md:px-8 lg:px-10 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-8">
-            {/* Left Column - Logo & Description */}
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                  WA
+    <footer className="relative overflow-hidden  text-slate-300">
+      {/* Background Decorations */}
+      {/* <div className="absolute inset-0 overflow-hidden opacity-10">
+        <div className="absolute -left-1/8 top-0 h-[500px] w-[500px] rounded-full bg-blue-500"></div>
+        <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-500"></div>
+      </div> */}
+
+      <div className="relative z-10 px-4 md:px-6">
+        <div className="mx-auto max-w-7xl py-12 md:py-16">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-3">
+              <div className="mb-4 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+                  <img
+                    alt="Logo"
+                    width="32"
+                    height="32"
+                    className="h-8 w-8 rounded-full object-cover object-top"
+                    src="/about.webp"
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-white">Zeeshan Nawaz</h3>
+                <span className="text-xl font-bold text-white">
+                  Zeeshan Nawaz
+                </span>
               </div>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Passionate educator and tech enthusiast dedicated to sharing
-                knowledge and helping others grow in their technical journey.
+              <p className="mb-6 text-slate-400">
+                Cybersecurity expert, web developer, and educator dedicated to
+                sharing knowledge and empowering others in the tech world.
               </p>
 
-              {/* Social Media Icons */}
-              <div className="flex gap-3 mb-6">
-                {socialIcons.map((social, index) => (
+              {/* Social Links */}
+              <div className="mb-6 flex flex-wrap gap-3">
+                {socialLinks.map((social) => (
                   <a
-                    key={index}
-                    href="#"
-                    className="w-10 h-10 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center text-gray-400 hover:text-blue-400 hover:border-blue-500 transition-all"
-                    title={social.name}
+                    key={social.name}
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-800 text-slate-400 transition-colors hover:bg-blue-600 hover:text-white"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={social.href}
+                    aria-label={social.name}
                   >
-                    {social.icon}
+                    <span className="h-6 w-6">
+                      {getSocialIcon(social.icon)}
+                    </span>
                   </a>
                 ))}
               </div>
 
-              {/* Music Player */}
-              <div className="bg-gray-900/80 border border-gray-800 rounded-lg p-4">
-                <div className="flex items-center gap-3 mb-3">
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    className="w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center text-white transition"
-                  >
-                    {isPlaying ? (
+              {/* Now Playing Widget */}
+              <div className="mt-4">
+                <div className="relative w-full max-w-3xl rounded-xl border border-slate-800 bg-slate-900 p-6">
+                  <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 border-blue-800"></div>
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                      </span>
+                      Now Playing
+                    </span>
+                    <span className="text-sm text-slate-400">on Spotify</span>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-slate-800 text-slate-400">
                       <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
                         viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-8 w-8"
                       >
-                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                        <path d="M9 18V5l12-2v13" />
+                        <circle cx="6" cy="18" r="3" />
+                        <circle cx="18" cy="16" r="3" />
                       </svg>
-                    ) : (
-                      <svg
-                        className="w-5 h-5 ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-base font-medium text-white">
+                        Not Playing
+                      </p>
+                      <p className="text-sm text-slate-400">Spotify is idle</p>
+                    </div>
+                    <div className="flex-shrink-0 text-green-400">
+                      <svg className="h-6 w-6" viewBox="0 0 168 168">
+                        <path
+                          fill="currentColor"
+                          d="M83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l.001-.004zm38.404 120.78a5.217 5.217 0 01-7.18 1.73c-19.662-12.01-44.414-14.73-73.564-8.07a5.222 5.222 0 01-6.249-3.93 5.213 5.213 0 013.926-6.25c31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35a6.538 6.538 0 014.354-8.143c30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-.001zm.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219a7.835 7.835 0 015.221-9.771c29.581-8.98 78.756-7.245 109.83 11.202a7.823 7.823 0 012.74 10.733c-2.2 3.722-7.02 4.949-10.73 2.739z"
+                        />
                       </svg>
-                    )}
-                  </button>
-                  <div className="flex-1">
-                    <p className="text-white font-medium text-sm">Tull Kamen</p>
-                    <p className="text-gray-400 text-xs">Zeeshan Nawaz</p>
+                    </div>
                   </div>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-1.5">
-                  <div
-                    className="bg-blue-600 h-1.5 rounded-full"
-                    style={{ width: "35%" }}
-                  ></div>
+              </div>
+            </div>
+
+            {/* Platform Links */}
+            <div className="lg:col-span-2">
+              <h3 className="mb-6 text-lg font-semibold text-white">
+                Platform
+              </h3>
+              <ul className="space-y-3">
+                {platformLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-blue-400"
+                      href={link.href}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources Links */}
+            <div className="lg:col-span-2">
+              <h3 className="mb-6 text-lg font-semibold text-white">
+                Resources
+              </h3>
+              <ul className="space-y-3">
+                {resourceLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-blue-400"
+                      href={link.href}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Tools Links */}
+            <div className="lg:col-span-2">
+              <h3 className="mb-6 text-lg font-semibold text-white">Tools</h3>
+              <ul className="space-y-3">
+                {toolLinks.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-blue-400"
+                      href={link.href}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info & Newsletter */}
+            <div className="lg:col-span-3">
+              <div className="mb-8">
+                <h3 className="mb-6 text-lg font-semibold text-white">
+                  Contact Info
+                </h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400"
+                    >
+                      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                    </svg>
+                    <span className="text-sm text-slate-400">hi@wasii.dev</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400"
+                    >
+                      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                    </svg>
+                    <span className="text-sm text-slate-400">
+                      +1 (204) 813-2846
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mt-1 h-5 w-5 flex-shrink-0 text-blue-400"
+                    >
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <span className="text-sm text-slate-400">
+                      Lahore, Pakistan
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Newsletter */}
+              <div>
+                <h3 className="mb-4 text-lg font-semibold text-white">
+                  Newsletter
+                </h3>
+                <p className="mb-4 text-sm text-slate-400">
+                  Get updates on new content and tips.
+                </p>
+                <div className="mb-4 space-y-3">
+                  <input
+                    type="email"
+                    className="flex h-9 w-full rounded-md border border-slate-700 bg-slate-800 px-3 py-1 text-base text-white outline-none transition-all placeholder:text-slate-500 focus-visible:border-blue-500 focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSubscribe()}
+                    disabled={status === "loading"}
+                  />
+                  <button
+                    onClick={handleSubscribe}
+                    disabled={status === "loading"}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-blue-700 disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    {status === "loading" ? "Subscribing..." : "Subscribe"}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                {["Home", "About", "Content", "Resources", "Services"].map(
-                  (link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="text-gray-400 hover:text-white transition"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-
-            {/* Categories */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Categories</h4>
-              <ul className="space-y-2">
-                {[
-                  "Cybersecurity",
-                  "Web Development",
-                  "Education",
-                  "Design",
-                ].map((category) => (
-                  <li key={category}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition"
-                    >
-                      {category}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources & Tools */}
-            <div>
-              <h4 className="text-white font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 mb-6">
-                {["Blog", "Tutorials", "Tools", "Community"].map((resource) => (
-                  <li key={resource}>
-                    <a
-                      href="#"
-                      className="text-gray-400 hover:text-white transition"
-                    >
-                      {resource}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <h4 className="text-white font-bold mb-4">Tools</h4>
-              <ul className="space-y-2">
-                {["Firewall Bypass", "Number Lookup", "URL Shortener"].map(
-                  (tool) => (
-                    <li key={tool}>
-                      <a
-                        href="#"
-                        className="text-gray-400 hover:text-white transition"
-                      >
-                        {tool}
-                      </a>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact Information */}
-          <div className="border-t border-gray-800 pt-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
-              <div>
-                <p className="text-gray-400 text-sm mb-1">Email</p>
-                <a
-                  href="iamzeeshanawaz@gmail.com"
-                  className="text-white hover:text-blue-400 transition"
-                >
-                  iamzeeshanawaz@gmail.com
-                </a>
-              </div>
-              <div>
-                <p className="text-gray-400 text-sm mb-1">Phone</p>
-                <a
-                  href="tel:+1234567890"
-                  className="text-white hover:text-blue-400 transition"
-                >
-                  +1 (234) 567-890
-                </a>
-              </div>
-              <div>
-                <p className="text-gray-400 text-sm mb-1">Location</p>
-                <p className="text-white">Global</p>
+                <p className="text-xs text-slate-500">
+                  I respect your privacy. Unsubscribe at any time.
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Copyright */}
-      <div className="border-t border-gray-800 px-4 sm:px-6 md:px-8 lg:px-10 py-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-400 text-sm">
-            © 2025 Zeeshan Nawaz. All rights reserved.
-          </p>
+          {/* Divider */}
+          <div className="my-8 h-px w-full bg-slate-800"></div>
+
+          {/* Bottom Section */}
+          <div className="flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
+            <div className="flex items-center gap-1">
+              <span>
+                © 2020 - {new Date().getFullYear()} Zeeshan Nawaz. All rights
+                reserved.
+              </span>
+              <span className="flex items-center gap-1 text-slate-400 ml-2">
+                Made with 🩵
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-6">
+              {legalLinks.map((link) => (
+                <a
+                  key={link.name}
+                  className="text-slate-400 hover:text-blue-400"
+                  href={link.href}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>
