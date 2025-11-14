@@ -1,129 +1,57 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import ServicesDropdown from "./components/ServicesDropdown";
-import AboutDropdown from "./components/AboutDropdown";
-import ContentDropdown from "./components/ContentDropdown";
-import ResourcesDropdown from "./components/ResourcesDropdown";
-import InfoCards from "./components/InfoCards";
-import SkillsSection from "./components/SkillsSection";
-import Testimonials from "./components/Testimonials";
-import BlogPosts from "./components/BlogPosts";
-import Pricing from "./components/Pricing";
-import Newsletter from "./components/Newsletter";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./components/Home";
+import ServicesPage from "./components/Service";
+import AboutPage from "./components/About";
+import ContactPage from "./components/Contact";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isContentOpen, setIsContentOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  const handleAboutHover = () => {
-    setIsAboutOpen(!isAboutOpen);
-    // Close other dropdowns
-    setIsContentOpen(false);
-    setIsResourcesOpen(false);
-    setIsServicesOpen(false);
-  };
-
-  const handleContentHover = () => {
-    setIsContentOpen(!isContentOpen);
-    // Close other dropdowns
-    setIsAboutOpen(false);
-    setIsResourcesOpen(false);
-    setIsServicesOpen(false);
-  };
-
-  const handleResourcesHover = () => {
-    setIsResourcesOpen(!isResourcesOpen);
-    // Close other dropdowns
-    setIsAboutOpen(false);
-    setIsContentOpen(false);
-    setIsServicesOpen(false);
-  };
-
-  const handleServicesHover = () => {
-    setIsServicesOpen(!isServicesOpen);
-    // Close other dropdowns
-    setIsAboutOpen(false);
-    setIsContentOpen(false);
-    setIsResourcesOpen(false);
-  };
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <div
-      className={`${isDarkMode ? "bg-[#0B1120]" : "bg-white"} ${
-        isDarkMode ? "text-white" : "text-gray-900"
-      } min-h-screen relative overflow-x-hidden transition-colors duration-300`}
-    >
-      <Navbar
-        onAboutHover={handleAboutHover}
-        onContentHover={handleContentHover}
-        onResourcesHover={handleResourcesHover}
-        onServicesHover={handleServicesHover}
-        isAboutOpen={isAboutOpen}
-        isContentOpen={isContentOpen}
-        isResourcesOpen={isResourcesOpen}
-        isServicesOpen={isServicesOpen}
-        isDarkMode={isDarkMode}
-        toggleDarkMode={toggleDarkMode}
-      />
-      <div className="px-16">
-        {/* Dropdowns - positioned absolutely below navbar */}
-        {/* <div className="relative z-40">
-        {isAboutOpen && (
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
-            <AboutDropdown />
-          </div>
-        )}
-        {isContentOpen && (
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
-            <ContentDropdown />
-          </div>
-        )}
-        {isResourcesOpen && (
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
-            <ResourcesDropdown />
-          </div>
-        )}
-        {isServicesOpen && (
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 hidden lg:block">
-            <ServicesDropdown />
-          </div>
-        )}
-      </div> */}
-        <Hero isDarkMode={isDarkMode} />
+    <BrowserRouter>
+      <div
+        className={
+          isDarkMode ? "bg-gray-900 min-h-screen" : "bg-white min-h-screen"
+        }
+      >
+        <Navbar
+          onAboutHover={() => setIsAboutOpen(true)}
+          onAboutLeave={() => setIsAboutOpen(false)}
+          onContentHover={() => setIsContentOpen(true)}
+          onContentLeave={() => setIsContentOpen(false)}
+          onServicesHover={() => setIsServicesOpen(true)}
+          onServicesLeave={() => setIsServicesOpen(false)}
+          isAboutOpen={isAboutOpen}
+          isContentOpen={isContentOpen}
+          isServicesOpen={isServicesOpen}
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
 
-        {/* Skills & Services Section */}
-        <SkillsSection />
-
-        {/* Testimonials Section */}
-        <Testimonials />
-
-        {/* Blog Posts Section */}
-        <BlogPosts />
-
-        {/* Pricing Section */}
-        <Pricing />
-
-        {/* Newsletter Section */}
-        <Newsletter />
-
-        {/* CTA Section */}
-        <CTA />
-
-        {/* Footer */}
-        <Footer />
+        <Routes>
+          <Route path="/" element={<HomePage isDarkMode={isDarkMode} />} />
+          <Route
+            path="/services"
+            element={<ServicesPage isDarkMode={isDarkMode} />}
+          />
+          <Route
+            path="/about"
+            element={<AboutPage isDarkMode={isDarkMode} />}
+          />
+          <Route
+            path="/contact"
+            element={<ContactPage isDarkMode={isDarkMode} />}
+          />
+        </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 

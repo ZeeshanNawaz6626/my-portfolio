@@ -1,65 +1,47 @@
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar({
   onAboutHover,
   onAboutLeave,
   onContentHover,
   onContentLeave,
-  onResourcesHover,
-  onResourcesLeave,
   onServicesHover,
   onServicesLeave,
   isAboutOpen,
   isContentOpen,
-  isResourcesOpen,
   isServicesOpen,
   isDarkMode,
   toggleDarkMode,
 }) {
-  const DropdownArrow = ({ isOpen }) => (
-    <svg
-      className={`w-3 h-3 transition-transform duration-200 ease-in-out ${
-        isOpen ? "rotate-180" : ""
-      }`}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M19 9l-7 7-7-7"
-      />
-    </svg>
-  );
+  const location = useLocation();
 
-  const NavItem = ({
-    children,
-    isOpen,
-    onMouseEnter,
-    onMouseLeave,
-    hasDropdown = false,
-  }) => (
-    <li
-      className="relative cursor-pointer transition"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <span
-        className={`${
-          isOpen
-            ? "text-blue-500"
-            : isDarkMode
-            ? "hover:text-white"
-            : "hover:text-gray-900"
-        } flex items-center gap-1 relative`}
+  const NavItem = ({ children, isOpen, onMouseEnter, onMouseLeave, to }) => {
+    const isActive = location.pathname === to;
+
+    return (
+      <li
+        className="relative cursor-pointer transition"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        {children}
-        {hasDropdown && <DropdownArrow isOpen={isOpen} />}
-      </span>
-    </li>
-  );
+        <Link
+          to={to}
+          className={`${
+            isActive || isOpen
+              ? "text-blue-500"
+              : isDarkMode
+              ? "hover:text-white"
+              : "hover:text-gray-900"
+          } flex items-center gap-1 relative`}
+        >
+          {children}
+          {isActive && (
+            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-blue-500"></span>
+          )}
+        </Link>
+      </li>
+    );
+  };
 
   return (
     <nav
@@ -93,43 +75,30 @@ export default function Navbar({
           isDarkMode ? "text-gray-300" : "text-gray-700"
         } text-sm md:text-sm ml-10`}
       >
-        <li className="relative cursor-pointer transition">
-          <span className="relative text-blue-500">
-            Home
-            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-blue-500"></span>
-          </span>
-        </li>
+        <NavItem to="/">Home</NavItem>
         <NavItem
+          to="/services"
+          isOpen={isServicesOpen}
+          onMouseEnter={onServicesHover}
+          onMouseLeave={onServicesLeave}
+        >
+          Services
+        </NavItem>
+        <NavItem
+          to="/about"
           isOpen={isAboutOpen}
           onMouseEnter={onAboutHover}
           onMouseLeave={onAboutLeave}
-          hasDropdown
         >
           About
         </NavItem>
         <NavItem
+          to="/contact"
           isOpen={isContentOpen}
           onMouseEnter={onContentHover}
           onMouseLeave={onContentLeave}
-          hasDropdown
         >
-          Content
-        </NavItem>
-        <NavItem
-          isOpen={isResourcesOpen}
-          onMouseEnter={onResourcesHover}
-          onMouseLeave={onResourcesLeave}
-          hasDropdown
-        >
-          Resources
-        </NavItem>
-        <NavItem
-          isOpen={isServicesOpen}
-          onMouseEnter={onServicesHover}
-          onMouseLeave={onServicesLeave}
-          hasDropdown
-        >
-          Services
+          Contact
         </NavItem>
       </ul>
 
@@ -233,7 +202,7 @@ export default function Navbar({
             <path d="M15 12H3"></path>
             <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
           </svg>
-          Sign Up
+          My Resume
         </button>
       </div>
     </nav>
