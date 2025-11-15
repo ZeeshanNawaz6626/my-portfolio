@@ -28,7 +28,7 @@ export default function AboutPage({ isDarkMode }) {
                     Hi, I'm{" "}
                     <span className="relative">
                       <span className="relative z-10 text-blue-600 dark:text-blue-400">
-                        Waseem Akram
+                        Zeeshan Nawaz
                       </span>
                       <svg
                         className="absolute -bottom-2 left-0 z-0 w-full"
@@ -113,7 +113,7 @@ export default function AboutPage({ isDarkMode }) {
                 <div className="relative flex items-center justify-center">
                   <div className="relative h-[400px] w-[400px] overflow-hidden rounded-2xl border-8 border-white shadow-xl dark:border-slate-800">
                     <img
-                      alt="Waseem Akram"
+                      alt="Zeeshan Nawaz"
                       decoding="async"
                       className="object-cover object-top"
                       sizes="100vw"

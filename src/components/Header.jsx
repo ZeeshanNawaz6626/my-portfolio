@@ -65,7 +65,7 @@ export default function Header() {
             />
           </div>
           <span className="text-xl font-bold text-slate-900 dark:text-white">
-            Waseem Akram
+            Zeeshan Nawaz
           </span>
         </a>
 

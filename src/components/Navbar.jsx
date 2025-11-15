@@ -124,7 +124,7 @@ export default function Navbar({
               isDarkMode ? "text-white" : "text-gray-900"
             }`}
           >
-            Waseem Akram
+            Zeeshan Nawaz
           </h1>
         </div>
 
