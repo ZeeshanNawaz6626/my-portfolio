@@ -1,15 +1,53 @@
-import { useState } from "react";
-import AboutDropdown from "./AboutDropdown";
-import ContentDropdown from "./ContentDropdown";
-import ResourcesDropdown from "./ResourcesDropdown";
-import ServicesDropdown from "./ServicesDropdown";
+import { useState, useEffect } from "react";
 
 export default function Hero({ isDarkMode }) {
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isContentOpen, setIsContentOpen] = useState(false);
-  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState(0); // 0, 1, 2 for each card
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
+  // Auto-rotate cards every 3 seconds
+  useEffect(() => {
+    if (!isAutoRotating) return;
 
+    const interval = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % 3);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isAutoRotating]);
+
+  const handleCardClick = (index) => {
+    setActiveCard(index);
+    setIsAutoRotating(false); // Stop auto-rotation when user clicks manually
+
+    // Optional: Restart auto-rotation after 10 seconds of inactivity
+    setTimeout(() => {
+      setIsAutoRotating(true);
+    }, 10000);
+  };
+
+  const getCardStyles = (index) => {
+    const isActive = activeCard === index;
+
+    return {
+      transform: isActive
+        ? "scale(1) rotate(2deg)"
+        : "scale(0.95) rotate(2deg)",
+      opacity: isActive ? 1 : 0.7,
+      zIndex: isActive ? 10 : 5,
+    };
+  };
+
+  const getTextStyles = (index) => {
+    const isActive = activeCard === index;
+
+    return {
+      title: isActive
+        ? "text-slate-900 dark:text-white font-semibold"
+        : "text-slate-600 dark:text-slate-400 font-semibold",
+      description: isActive
+        ? "text-slate-700 dark:text-slate-300"
+        : "text-slate-600 dark:text-slate-400",
+    };
+  };
   return (
     <section className="relative overflow-hidden  py-20 ">
       {/* <div className="absolute inset-0 overflow-hidden">
@@ -155,7 +193,7 @@ export default function Hero({ isDarkMode }) {
                   </button>
                 </a>
                 <a href="/resume">
-                  <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 h-10 has-[>svg]:px-4 rounded-lg border-slate-300 px-8 dark:border-slate-700">
+                  <button className="text-white inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 h-10 has-[>svg]:px-4 rounded-lg border-slate-300 px-8 dark:border-slate-700">
                     View Resume
                   </button>
                 </a>
@@ -167,16 +205,19 @@ export default function Hero({ isDarkMode }) {
               <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full border-8 border-dashed border-slate-100 dark:border-slate-800"></div>
               <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-slate-100 dark:border-slate-800"></div>
 
-              {/* Card 1 */}
+              {/* Card 1 - Cybersecurity Expert */}
               <div
                 className="absolute flex w-64 cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-2 shadow-lg transition-all duration-500 dark:border-slate-800 dark:bg-slate-900 left-0 top-6"
-                style={{
-                  transform: "scale(1.05) rotate(-3deg)",
-                  opacity: 1,
-                  zIndex: 10,
-                }}
+                style={getCardStyles(0)}
+                onClick={() => handleCardClick(0)}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                <div
+                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors duration-300 ${
+                    activeCard === 0
+                      ? "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400"
+                      : "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -193,26 +234,43 @@ export default function Hero({ isDarkMode }) {
                     <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                <h3
+                  className={`mb-2 text-lg transition-colors duration-300 ${
+                    getTextStyles(0).title
+                  }`}
+                >
                   Cybersecurity Expert
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p
+                  className={`text-sm transition-colors duration-300 ${
+                    getTextStyles(0).description
+                  }`}
+                >
                   Specialized in ethical hacking, penetration testing, and
                   security awareness training.
                 </p>
-                <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 border-blue-200 dark:border-blue-800"></div>
+                <div
+                  className={`absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 transition-colors duration-300 ${
+                    activeCard === 0
+                      ? "border-blue-200 dark:border-blue-800"
+                      : "border-slate-200 dark:border-slate-700"
+                  }`}
+                ></div>
               </div>
 
-              {/* Card 2 */}
+              {/* Card 2 - Web Developer */}
               <div
                 className="absolute flex w-64 cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-2 shadow-lg transition-all duration-500 dark:border-slate-800 dark:bg-slate-900 right-0 top-32"
-                style={{
-                  transform: "scale(0.95) rotate(2deg)",
-                  opacity: 0.7,
-                  zIndex: 5,
-                }}
+                style={getCardStyles(1)}
+                onClick={() => handleCardClick(1)}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+                <div
+                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors duration-300 ${
+                    activeCard === 1
+                      ? "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400"
+                      : "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -230,26 +288,43 @@ export default function Hero({ isDarkMode }) {
                     <path d="m8 6-6 6 6 6" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                <h3
+                  className={`mb-2 text-lg transition-colors duration-300 ${
+                    getTextStyles(1).title
+                  }`}
+                >
                   Web Developer
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p
+                  className={`text-sm transition-colors duration-300 ${
+                    getTextStyles(1).description
+                  }`}
+                >
                   Creating modern, responsive websites and applications with
                   cutting-edge technologies.
                 </p>
-                <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 border-purple-200 dark:border-purple-800"></div>
+                <div
+                  className={`absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 transition-colors duration-300 ${
+                    activeCard === 1
+                      ? "border-purple-200 dark:border-purple-800"
+                      : "border-slate-200 dark:border-slate-700"
+                  }`}
+                ></div>
               </div>
 
-              {/* Card 3 */}
+              {/* Card 3 - Educator & Mentor */}
               <div
                 className="absolute flex w-64 cursor-pointer flex-col rounded-xl border border-slate-200 bg-white p-2 shadow-lg transition-all duration-500 dark:border-slate-800 dark:bg-slate-900 left-1/4 bottom-6"
-                style={{
-                  transform: "scale(0.95) rotate(-1deg)",
-                  opacity: 0.7,
-                  zIndex: 5,
-                }}
+                style={getCardStyles(2)}
+                onClick={() => handleCardClick(2)}
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+                <div
+                  className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors duration-300 ${
+                    activeCard === 2
+                      ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                      : "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+                  }`}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -269,14 +344,28 @@ export default function Hero({ isDarkMode }) {
                     <circle cx="4" cy="20" r="2" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                <h3
+                  className={`mb-2 text-lg transition-colors duration-300 ${
+                    getTextStyles(2).title
+                  }`}
+                >
                   Educator & Mentor
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
+                <p
+                  className={`text-sm transition-colors duration-300 ${
+                    getTextStyles(2).description
+                  }`}
+                >
                   Passionate about sharing knowledge and helping others grow in
                   their technical journey.
                 </p>
-                <div className="absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 border-green-200 dark:border-green-800"></div>
+                <div
+                  className={`absolute -bottom-2 -right-2 h-8 w-8 rounded-br-xl border-b-4 border-r-4 transition-colors duration-300 ${
+                    activeCard === 2
+                      ? "border-green-200 dark:border-green-800"
+                      : "border-slate-200 dark:border-slate-700"
+                  }`}
+                ></div>
               </div>
             </div>
           </div>

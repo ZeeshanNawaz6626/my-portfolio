@@ -2,14 +2,14 @@ import Footer from "./Footer";
 
 export default function AboutPage({ isDarkMode }) {
   return (
-    <div className="flex-1">
+    <div className="flex-1 pt-16">
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-white py-20 dark:bg-slate-950">
-          <div className="absolute inset-0 overflow-hidden">
+        <section className="relative overflow-hidden  py-20 ">
+          {/* <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
             <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-          </div>
+          </div> */}
           <div className="relative z-10 px-4 md:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -27,18 +27,34 @@ export default function AboutPage({ isDarkMode }) {
                   <h1 className="mb-6 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
                     Hi, I'm{" "}
                     <span className="relative">
-                      <span className="relative z-10 text-blue-600 dark:text-blue-400">Waseem Akram</span>
-                      <svg className="absolute -bottom-2 left-0 z-0 w-full" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0,17 C50,5 100,30 200,17 L200,20 L0,20 Z" fill="#3b82f6" fillOpacity="0.3" className="dark:fill-blue-900"></path>
+                      <span className="relative z-10 text-blue-600 dark:text-blue-400">
+                        Waseem Akram
+                      </span>
+                      <svg
+                        className="absolute -bottom-2 left-0 z-0 w-full"
+                        viewBox="0 0 200 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0,17 C50,5 100,30 200,17 L200,20 L0,20 Z"
+                          fill="#3b82f6"
+                          fillOpacity="0.3"
+                          className="dark:fill-blue-900"
+                        ></path>
                       </svg>
                     </span>
                   </h1>
                   <p className="mb-6 text-lg text-slate-600 dark:text-slate-400">
-                    I'm a passionate cybersecurity expert, educator, and web developer with over 6 years of experience in the tech industry. My mission is to make technology and security accessible to
-                    everyone through education and mentorship.
+                    I'm a passionate cybersecurity expert, educator, and web
+                    developer with over 6 years of experience in the tech
+                    industry. My mission is to make technology and security
+                    accessible to everyone through education and mentorship.
                   </p>
                   <p className="mb-8 text-lg text-slate-600 dark:text-slate-400">
-                    Based in Pakistan, I've worked with clients and students worldwide, helping them build secure systems, learn valuable tech skills, and grow their careers in the digital landscape.
+                    Based in Pakistan, I've worked with clients and students
+                    worldwide, helping them build secure systems, learn valuable
+                    tech skills, and grow their careers in the digital
+                    landscape.
                   </p>
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <a href="/contact">
@@ -70,7 +86,7 @@ export default function AboutPage({ isDarkMode }) {
                     <a href="/resume">
                       <button
                         data-slot="button"
-                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 h-10 rounded-lg border-slate-300 px-8 dark:border-slate-700"
+                        className="text-white inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50 h-10 rounded-lg border-slate-300 px-4 dark:border-slate-700"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +119,13 @@ export default function AboutPage({ isDarkMode }) {
                       sizes="100vw"
                       srcSet="/_next/image?url=%2Fabout.webp&w=640&q=50 640w, /_next/image?url=%2Fabout.webp&w=750&q=50 750w, /_next/image?url=%2Fabout.webp&w=828&q=50 828w, /_next/image?url=%2Fabout.webp&w=1080&q=50 1080w, /_next/image?url=%2Fabout.webp&w=1200&q=50 1200w, /_next/image?url=%2Fabout.webp&w=1920&q=50 1920w, /_next/image?url=%2Fabout.webp&w=2048&q=50 2048w, /_next/image?url=%2Fabout.webp&w=3840&q=50 3840w"
                       src="/_next/image?url=%2Fabout.webp&w=3840&q=50"
-                      style={{ position: "absolute", height: "100%", width: "100%", inset: "0px", color: "transparent" }}
+                      style={{
+                        position: "absolute",
+                        height: "100%",
+                        width: "100%",
+                        inset: "0px",
+                        color: "transparent",
+                      }}
                     />
                   </div>
                   <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-xl bg-blue-100 dark:bg-blue-900/30"></div>
@@ -115,10 +137,12 @@ export default function AboutPage({ isDarkMode }) {
         </section>
 
         {/* Skills & Expertise Section */}
-        <section className="py-20 dark:bg-slate-950">
+        <section className="py-20 ">
           <div className="px-4 md:px-6">
             <div className="mx-auto max-w-7xl">
-              <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">Skills &amp; Expertise</h2>
+              <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                Skills &amp; Expertise
+              </h2>
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {/* Cybersecurity */}
                 <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
@@ -139,8 +163,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">Cybersecurity</h3>
-                  <p className="mb-4 text-slate-600 dark:text-slate-400">Specialized in protecting digital assets and educating others about security best practices.</p>
+                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+                    Cybersecurity
+                  </h3>
+                  <p className="mb-4 text-slate-600 dark:text-slate-400">
+                    Specialized in protecting digital assets and educating
+                    others about security best practices.
+                  </p>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
@@ -185,8 +214,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="m8 6-6 6 6 6"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">Web Development</h3>
-                  <p className="mb-4 text-slate-600 dark:text-slate-400">Creating modern, responsive, and secure web applications using cutting-edge technologies.</p>
+                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+                    Web Development
+                  </h3>
+                  <p className="mb-4 text-slate-600 dark:text-slate-400">
+                    Creating modern, responsive, and secure web applications
+                    using cutting-edge technologies.
+                  </p>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
@@ -239,8 +273,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">Education &amp; Mentoring</h3>
-                  <p className="mb-4 text-slate-600 dark:text-slate-400">Passionate about sharing knowledge and helping others grow in their technical journey.</p>
+                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+                    Education &amp; Mentoring
+                  </h3>
+                  <p className="mb-4 text-slate-600 dark:text-slate-400">
+                    Passionate about sharing knowledge and helping others grow
+                    in their technical journey.
+                  </p>
                   <ul className="space-y-2">
                     <li className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
@@ -270,10 +309,12 @@ export default function AboutPage({ isDarkMode }) {
         </section>
 
         {/* Professional Journey Section */}
-        <section className="bg-slate-50 py-20 dark:bg-slate-900">
+        <section className="py-20">
           <div className="px-4 md:px-6">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">Professional Journey</h2>
+              <h2 className="mb-12 text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                Professional Journey
+              </h2>
               <div className="relative border-l border-slate-200 pl-8 dark:border-slate-700">
                 {/* Job 1 */}
                 <div className="mb-12 last:mb-0">
@@ -286,12 +327,19 @@ export default function AboutPage({ isDarkMode }) {
                       >
                         2025 - Present
                       </span>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Angular Developer</h3>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        Angular Developer
+                      </h3>
                     </div>
-                    <p className="mb-2 text-slate-700 dark:text-slate-300">Devaxix</p>
+                    <p className="mb-2 text-slate-700 dark:text-slate-300">
+                      Devaxix
+                    </p>
                     <p className="text-slate-600 dark:text-slate-400">
-                      Developing and maintaining Angular-based web applications while ensuring responsive design, performance optimization, and smooth UI/UX. Working closely with designers and
-                      engineers using modern stacks like Angular 16+, Tailwind CSS, TypeScript, RxJS, and RESTful APIs.
+                      Developing and maintaining Angular-based web applications
+                      while ensuring responsive design, performance
+                      optimization, and smooth UI/UX. Working closely with
+                      designers and engineers using modern stacks like Angular
+                      16+, Tailwind CSS, TypeScript, RxJS, and RESTful APIs.
                     </p>
                   </div>
                 </div>
@@ -307,12 +355,19 @@ export default function AboutPage({ isDarkMode }) {
                       >
                         2021 - 2022
                       </span>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Application Security Analyst</h3>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        Application Security Analyst
+                      </h3>
                     </div>
-                    <p className="mb-2 text-slate-700 dark:text-slate-300">Gore Mutual Insurance (Remote)</p>
+                    <p className="mb-2 text-slate-700 dark:text-slate-300">
+                      Gore Mutual Insurance (Remote)
+                    </p>
                     <p className="text-slate-600 dark:text-slate-400">
-                      Performed secure code reviews using Veracode and Snyk, conducted vulnerability assessments, penetration testing, and provided remediation guidance to development teams.
-                      Specialized in static/dynamic analysis, threat intelligence, and hardening systems.
+                      Performed secure code reviews using Veracode and Snyk,
+                      conducted vulnerability assessments, penetration testing,
+                      and provided remediation guidance to development teams.
+                      Specialized in static/dynamic analysis, threat
+                      intelligence, and hardening systems.
                     </p>
                   </div>
                 </div>
@@ -328,12 +383,19 @@ export default function AboutPage({ isDarkMode }) {
                       >
                         2021 - Present
                       </span>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Lead Cybersecurity Educator</h3>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        Lead Cybersecurity Educator
+                      </h3>
                     </div>
-                    <p className="mb-2 text-slate-700 dark:text-slate-300">Self-employed</p>
+                    <p className="mb-2 text-slate-700 dark:text-slate-300">
+                      Self-employed
+                    </p>
                     <p className="text-slate-600 dark:text-slate-400">
-                      Creating cybersecurity and web development content, mentoring students, and conducting security assessments. Built learning platforms and provided hands-on training using tools
-                      like Burp Suite, Nmap, Metasploit, and frameworks like Node.js and Next.js.
+                      Creating cybersecurity and web development content,
+                      mentoring students, and conducting security assessments.
+                      Built learning platforms and provided hands-on training
+                      using tools like Burp Suite, Nmap, Metasploit, and
+                      frameworks like Node.js and Next.js.
                     </p>
                   </div>
                 </div>
@@ -349,12 +411,18 @@ export default function AboutPage({ isDarkMode }) {
                       >
                         2020 - 2021
                       </span>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Application Security Tester</h3>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        Application Security Tester
+                      </h3>
                     </div>
-                    <p className="mb-2 text-slate-700 dark:text-slate-300">Saluber MD LLC. (Remote)</p>
+                    <p className="mb-2 text-slate-700 dark:text-slate-300">
+                      Saluber MD LLC. (Remote)
+                    </p>
                     <p className="text-slate-600 dark:text-slate-400">
-                      Managed SIEM platforms, analyzed a wide range of IT systems, prioritized security vulnerabilities, and explored reverse engineering fundamentals to enhance application security
-                      posture across the organization.
+                      Managed SIEM platforms, analyzed a wide range of IT
+                      systems, prioritized security vulnerabilities, and
+                      explored reverse engineering fundamentals to enhance
+                      application security posture across the organization.
                     </p>
                   </div>
                 </div>
@@ -364,12 +432,15 @@ export default function AboutPage({ isDarkMode }) {
         </section>
 
         {/* Beyond Technology Section */}
-        <section className="py-20 dark:bg-slate-950">
+        <section className="py-20 bg-slate-950/50">
           <div className="px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">Beyond Technology</h2>
+              <h2 className="mb-6 text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+                Beyond Technology
+              </h2>
               <p className="mb-12 text-lg text-slate-600 dark:text-slate-400">
-                While technology is my passion, I believe in maintaining a well-rounded life. Here are some things I enjoy outside of work:
+                While technology is my passion, I believe in maintaining a
+                well-rounded life. Here are some things I enjoy outside of work:
               </p>
               <div className="grid gap-6 sm:grid-cols-2">
                 {/* Interest 1 */}
@@ -392,9 +463,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="m9 12 2 2 4-4"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Cybersecurity</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Cybersecurity
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    Diving deep into ethical hacking, reverse engineering, and securing digital ecosystems. Constantly learning, breaking, and fixing things — responsibly.
+                    Diving deep into ethical hacking, reverse engineering, and
+                    securing digital ecosystems. Constantly learning, breaking,
+                    and fixing things — responsibly.
                   </p>
                 </div>
 
@@ -418,9 +493,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M20.054 15.987H3.946"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Full Stack Development</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Full Stack Development
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    Building cool stuff from frontend to backend. I love turning ideas into scalable apps, and making clean, performant, maintainable code.
+                    Building cool stuff from frontend to backend. I love turning
+                    ideas into scalable apps, and making clean, performant,
+                    maintainable code.
                   </p>
                 </div>
 
@@ -444,9 +523,13 @@ export default function AboutPage({ isDarkMode }) {
                       <circle cx="12" cy="7" r="4"></circle>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Mentorship</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Mentorship
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    Helping others level up in tech, cybersecurity, and life. I genuinely enjoy guiding beginners and sharing what I've learned the hard way.
+                    Helping others level up in tech, cybersecurity, and life. I
+                    genuinely enjoy guiding beginners and sharing what I've
+                    learned the hard way.
                   </p>
                 </div>
 
@@ -470,9 +553,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Writing</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Writing
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    From tech blogs to personal reflections — I write to express, document, and connect. Writing is how I teach myself and others.
+                    From tech blogs to personal reflections — I write to
+                    express, document, and connect. Writing is how I teach
+                    myself and others.
                   </p>
                 </div>
 
@@ -499,8 +586,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Gaming</h3>
-                  <p className="text-center text-slate-600 dark:text-slate-400">From strategy to story-driven games, gaming keeps my mind sharp and my creativity flowing. A great way to reset.</p>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Gaming
+                  </h3>
+                  <p className="text-center text-slate-600 dark:text-slate-400">
+                    From strategy to story-driven games, gaming keeps my mind
+                    sharp and my creativity flowing. A great way to reset.
+                  </p>
                 </div>
 
                 {/* Interest 6 */}
@@ -523,9 +615,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M12 18V2l7 4"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Music</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Music
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    Music fuels my mood and focus. Whether it's lo-fi while coding or something intense during a workout, I'm always tuned in.
+                    Music fuels my mood and focus. Whether it's lo-fi while
+                    coding or something intense during a workout, I'm always
+                    tuned in.
                   </p>
                 </div>
 
@@ -549,8 +645,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M12 22v-3"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Exploring Nature</h3>
-                  <p className="text-center text-slate-600 dark:text-slate-400">Stepping away from screens to reconnect with nature. Walks, hikes, sunsets — they all help me reflect and recharge.</p>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Exploring Nature
+                  </h3>
+                  <p className="text-center text-slate-600 dark:text-slate-400">
+                    Stepping away from screens to reconnect with nature. Walks,
+                    hikes, sunsets — they all help me reflect and recharge.
+                  </p>
                 </div>
 
                 {/* Interest 8 */}
@@ -574,9 +675,13 @@ export default function AboutPage({ isDarkMode }) {
                       <path d="M10 22h4"></path>
                     </svg>
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">Learning in Public</h3>
+                  <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
+                    Learning in Public
+                  </h3>
                   <p className="text-center text-slate-600 dark:text-slate-400">
-                    Documenting my journey, sharing wins and fails alike. Growth mindset &gt; perfection. Always experimenting, always shipping.
+                    Documenting my journey, sharing wins and fails alike. Growth
+                    mindset &gt; perfection. Always experimenting, always
+                    shipping.
                   </p>
                 </div>
               </div>
@@ -588,9 +693,13 @@ export default function AboutPage({ isDarkMode }) {
         <section className="bg-gradient-to-br from-blue-600 to-purple-600 py-16 text-white dark:from-blue-700 dark:to-purple-700">
           <div className="px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">Let's Connect</h2>
+              <h2 className="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
+                Let's Connect
+              </h2>
               <p className="mb-8 text-lg text-blue-100 dark:text-blue-200">
-                Whether you're interested in working together, have questions about my services, or just want to say hello, I'd love to hear from you.
+                Whether you're interested in working together, have questions
+                about my services, or just want to say hello, I'd love to hear
+                from you.
               </p>
               <a href="/contact">
                 <button

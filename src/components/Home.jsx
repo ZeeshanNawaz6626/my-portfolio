@@ -9,7 +9,7 @@ import Testimonials from "./Testimonials";
 
 export default function HomePage({ isDarkMode }) {
   return (
-    <div className="px-16">
+    <div>
       <Hero isDarkMode={isDarkMode} />
 
       {/* Skills & Services Section */}

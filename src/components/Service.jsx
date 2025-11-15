@@ -151,8 +151,8 @@ export default function ServicesPage() {
   const [activeCategory, setActiveCategory] = useState("All Services");
 
   return (
-    <div className="px-16">
-      <section className="relative overflow-hidden  py-20 ">
+    <div className="pt-16">
+      <section className="relative overflow-hidden  py-20  ">
         {/* Background decorative elements */}
         {/* <div
           className="absolute inset-0 overflow-hidden pointer-events-none"

@@ -65,11 +65,12 @@ const SocialLink = ({ href, label, icon }) => (
   </a>
 );
 
-const FAQItem = ({ question }) => {
+const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="border-b last:border-b-0">
+      {/* Question Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -90,11 +91,17 @@ const FAQItem = ({ question }) => {
           className={`size-4 shrink-0 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
           }`}
-          aria-hidden="true"
         >
           <path d="m6 9 6 6 6-6"></path>
         </svg>
       </button>
+
+      {/* Answer Section */}
+      {isOpen && (
+        <div className="pb-4 text-sm text-slate-600 dark:text-slate-300">
+          {answer}
+        </div>
+      )}
     </div>
   );
 };
@@ -310,10 +317,24 @@ const SOCIAL_LINKS = [
 ];
 
 const FAQ_QUESTIONS = [
-  "What services do you offer?",
-  "How quickly do you respond to inquiries?",
-  "Do you offer remote services?",
-  "How can I support your work?",
+  {
+    question: "What services do you offer?",
+    answer:
+      "I offer a range of services including cybersecurity consulting, web development, and tech education.",
+  },
+  {
+    question: "How quickly do you respond to inquiries?",
+    answer: "I typically respond to inquiries within 24-48 hours.",
+  },
+  {
+    question: "Do you offer remote services?",
+    answer: "Yes, I offer remote services to clients worldwide.",
+  },
+  {
+    question: "How can I support your work?",
+    answer:
+      "You can support my work by sharing my content, hiring my services, or contributing to my projects.",
+  },
 ];
 
 export default function ContactPage() {
@@ -338,9 +359,9 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 px-16">
+    <div className="min-h-screen bg-white dark:bg-slate-950 ">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white py-20 dark:bg-slate-950">
+      <section className="relative overflow-hidden bg-white py-20 pt-32 dark:bg-slate-950">
         {/* <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
           <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
@@ -487,7 +508,11 @@ export default function ContactPage() {
 
                   <div className="w-full">
                     {FAQ_QUESTIONS.map((question, index) => (
-                      <FAQItem key={index} question={question} />
+                      <FAQItem
+                        key={index}
+                        question={question.question}
+                        answer={question.answer}
+                      />
                     ))}
                   </div>
                 </div>
