@@ -21,37 +21,41 @@ export default function Footer() {
   const socialLinks = [
     {
       name: "LinkedIn",
-      href: "https://linkedin.com/in/hackerwasii",
+      href: "https://www.linkedin.com/in/imzeeshannawaz",
       icon: "linkedin",
     },
-    { name: "GitHub", href: "https://github.com/evildevill", icon: "github" },
+    {
+      name: "GitHub",
+      href: "https://github.com/ZeeshanNawaz6626/",
+      icon: "github",
+    },
     {
       name: "Facebook",
-      href: "https://facebook.com/hackerwasii",
+      href: "https://www.facebook.com/zeeshan.malik.886928",
       icon: "facebook",
     },
     {
       name: "Instagram",
-      href: "https://instagram.com/wasii_254",
+      href: "https://instagram.com/zeemalik243",
       icon: "instagram",
     },
     {
       name: "YouTube",
-      href: "https://www.youtube.com/@hackerwasii?sub_confirmation=1",
+      href: "https://www.youtube.com/",
       icon: "youtube",
     },
-    { name: "WhatsApp", href: "https://wa.me/+12048132846", icon: "whatsapp" },
+    { name: "WhatsApp", href: "imzeeshannawaz@gmail.com", icon: "whatsapp" },
   ];
 
   const platformLinks = [
     { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
-    { name: "Services", href: "/service" },
-    { name: "Blog", href: "/blog" },
-    { name: "Courses", href: "/courses" },
-    { name: "Store", href: "/store" },
-    { name: "Dashboard", href: "/dashboard" },
     { name: "Contact", href: "/contact" },
+    // { name: "Blog", href: "/blog" },
+    // { name: "Courses", href: "/courses" },
+    // { name: "Store", href: "/store" },
+    // { name: "Dashboard", href: "/dashboard" },
   ];
 
   const resourceLinks = [
@@ -188,16 +192,16 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden  text-slate-300">
       {/* Background Decorations */}
-      {/* <div className="absolute inset-0 overflow-hidden opacity-10">
-        <div className="absolute -left-1/8 top-0 h-[500px] w-[500px] rounded-full bg-blue-500"></div>
+      <div className="absolute inset-0 overflow-hidden opacity-10">
+        <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-500"></div>
         <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-500"></div>
-      </div> */}
+      </div>
 
       <div className="relative z-10 px-4 md:px-6">
         <div className="mx-auto max-w-7xl py-12 md:py-16">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-12">
             {/* Brand Section */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-4">
               <div className="mb-4 flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white">
                   <img
@@ -205,7 +209,7 @@ export default function Footer() {
                     width="32"
                     height="32"
                     className="h-8 w-8 rounded-full object-cover object-top"
-                    src="/about.webp"
+                    src="images/1729787557582.jpg"
                   />
                 </div>
                 <span className="text-xl font-bold text-white">
@@ -288,7 +292,7 @@ export default function Footer() {
             </div>
 
             {/* Platform Links */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-4 px-24">
               <h3 className="mb-6 text-lg font-semibold text-white">
                 Platform
               </h3>
@@ -299,7 +303,7 @@ export default function Footer() {
                       className="flex items-center gap-2 text-sm text-slate-400 transition-colors hover:text-blue-400"
                       href={link.href}
                     >
-                      <svg
+                      {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
@@ -312,7 +316,7 @@ export default function Footer() {
                         className="h-4 w-4"
                       >
                         <path d="m9 18 6-6-6-6" />
-                      </svg>
+                      </svg> */}
                       {link.name}
                     </a>
                   </li>
@@ -321,7 +325,7 @@ export default function Footer() {
             </div>
 
             {/* Resources Links */}
-            <div className="lg:col-span-2">
+            {/* <div className="lg:col-span-2">
               <h3 className="mb-6 text-lg font-semibold text-white">
                 Resources
               </h3>
@@ -351,10 +355,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             {/* Tools Links */}
-            <div className="lg:col-span-2">
+            {/* <div className="lg:col-span-2">
               <h3 className="mb-6 text-lg font-semibold text-white">Tools</h3>
               <ul className="space-y-3">
                 {toolLinks.map((link) => (
@@ -382,10 +386,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
             {/* Contact Info & Newsletter */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-4">
               <div className="mb-8">
                 <h3 className="mb-6 text-lg font-semibold text-white">
                   Contact Info
@@ -407,7 +411,9 @@ export default function Footer() {
                       <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
                       <rect x="2" y="4" width="20" height="16" rx="2" />
                     </svg>
-                    <span className="text-sm text-slate-400">hi@wasii.dev</span>
+                    <span className="text-sm text-slate-400">
+                      imzeeshannawaz@gmail.com
+                    </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <svg
@@ -425,7 +431,7 @@ export default function Footer() {
                       <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
                     </svg>
                     <span className="text-sm text-slate-400">
-                      +1 (204) 813-2846
+                      +923026626342
                     </span>
                   </li>
                   <li className="flex items-start gap-3">

@@ -38,10 +38,10 @@ export default function BlogPosts() {
   return (
     <section className="relative overflow-hidden py-20 px-4 sm:px-6 lg:px-10">
       {/* Background circles */}
-      {/* <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
         <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-      </div> */}
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
@@ -71,7 +71,7 @@ export default function BlogPosts() {
               </span>
             </h2>
           </div>
-          <a href="/blog">
+          {/* <a href="/blog">
             <button className="text-white inline-flex items-center gap-2 rounded-md border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 text-sm font-medium transition-all">
               View All Posts
               <svg
@@ -86,7 +86,7 @@ export default function BlogPosts() {
                 <path d="m12 5 7 7-7 7" />
               </svg>
             </button>
-          </a>
+          </a> */}
         </div>
 
         {/* Blog Cards */}

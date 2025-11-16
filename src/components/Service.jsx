@@ -154,13 +154,13 @@ export default function ServicesPage() {
     <div className="pt-16">
       <section className="relative overflow-hidden  py-20  ">
         {/* Background decorative elements */}
-        {/* <div
+        <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
           aria-hidden="true"
         >
           <div className="absolute -right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
           <div className="absolute -left-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-        </div> */}
+        </div>
         <div className="relative z-10 px-4 md:px-6">
           <div className="mx-auto max-w-7xl">
             {/* Header Section */}

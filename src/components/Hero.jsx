@@ -50,10 +50,10 @@ export default function Hero({ isDarkMode }) {
   };
   return (
     <section className="relative overflow-hidden  py-20 ">
-      {/* <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
         <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-      </div> */}
+      </div>
 
       <div className="relative z-10 px-4 md:px-6">
         <div className="mx-auto max-w-7xl">
@@ -118,38 +118,42 @@ export default function Hero({ isDarkMode }) {
               <div className="mb-8 flex flex-wrap gap-4">
                 {[
                   {
-                    href: "https://linkedin.com/in/hackerwasii",
+                    href: "https://www.linkedin.com/in/imzeeshannawaz",
                     icon: "linkedin",
                     label: "LinkedIn",
                   },
                   {
-                    href: "https://github.com/evildevill",
+                    href: "https://github.com/ZeeshanNawaz6626/",
                     icon: "github",
                     label: "GitHub",
                   },
                   {
-                    href: "https://facebook.com/hackerwasii",
+                    href: "https://www.facebook.com/zeeshan.malik.886928",
                     icon: "facebook",
                     label: "Facebook",
                   },
                   {
-                    href: "https://instagram.com/wasii_254",
+                    href: "https://instagram.com/zeemalik243",
                     icon: "instagram",
                     label: "Instagram",
                   },
                   {
-                    href: "https://www.youtube.com/@hackerwasii?sub_confirmation=1",
+                    href: "https://www.youtube.com/",
                     icon: "youtube",
                     label: "YouTube",
                   },
-                  { href: "mailto:hi@wasii.dev", icon: "mail", label: "Email" },
                   {
-                    href: "https://tryhackme.com/p/hackerwasii",
-                    icon: "binary",
-                    label: "TryHackMe",
+                    href: "imzeeshannawaz@gmail.com",
+                    icon: "mail",
+                    label: "Email",
                   },
+                  // {
+                  //   href: "https://tryhackme.com/p/hackerwasii",
+                  //   icon: "binary",
+                  //   label: "TryHackMe",
+                  // },
                   {
-                    href: "https://wa.me/+12048132846",
+                    href: "https://wa.me/+923026626342",
                     icon: "phone",
                     label: "WhatsApp",
                   },

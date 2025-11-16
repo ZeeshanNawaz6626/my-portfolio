@@ -67,10 +67,10 @@ export default function Pricing() {
 
   return (
     <section className="relative overflow-hidden py-20">
-      {/* <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
         <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-      </div> */}
+      </div>
 
       <div className="relative z-10 px-4 md:px-6">
         <div className="mx-auto max-w-7xl">
@@ -219,7 +219,7 @@ export default function Pricing() {
 
                 {/* CTA Button */}
                 <div className="mt-auto">
-                  <a className="w-full block" href="/api/auth/login">
+                  <a className="w-full block" href="/contact">
                     <button
                       className={`w-full inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all h-10 rounded-md px-6 ${
                         plan.buttonStyle === "primary"

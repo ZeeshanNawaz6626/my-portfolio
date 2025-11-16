@@ -197,7 +197,11 @@ export default function SkillsSection() {
   };
 
   return (
-    <section className="px-4 sm:px-6 md:px-8 lg:px-10 py-8 md:py-12">
+    <section className="relative px-4 sm:px-6 md:px-8 lg:px-10 py-8 md:py-12">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
+        <div class="absolute -left-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
+      </div>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-10">

@@ -47,7 +47,11 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="px-4 sm:px-6 md:px-8 lg:px-10 py-12 md:py-4 lg:py-8 bg-[#0B1120]">
+    <section className="relative px-4 sm:px-6 md:px-8 lg:px-10 py-12 md:py-4 lg:py-8 bg-[#0B1120]">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -right-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
+        <div class="absolute -left-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
+      </div>
       <div className="max-w-4xl mx-auto text-center mb-8">
         <span className="inline-flex rounded-full bg-blue-100 px-4 py-1 text-sm font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 mb-4">
           Testimonials

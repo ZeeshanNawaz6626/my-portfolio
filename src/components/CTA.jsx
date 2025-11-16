@@ -1,10 +1,10 @@
 export default function CTA() {
   return (
     <section class="relative overflow-hidden bg-gradient-to-br from-blue-600 to-purple-600 py-20 text-white dark:from-blue-700 dark:to-purple-700">
-      {/* <div class="absolute inset-0 overflow-hidden opacity-10">
+      <div class="absolute inset-0 overflow-hidden opacity-10">
         <div class="absolute left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-white"></div>
         <div class="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-white"></div>
-      </div> */}
+      </div>
       <div class="relative z-10 px-4 md:px-6">
         <div class="mx-auto max-w-4xl text-center">
           <h2 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">

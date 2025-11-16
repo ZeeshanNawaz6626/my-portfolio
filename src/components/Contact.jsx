@@ -32,7 +32,7 @@ const FormInput = ({
       type={type}
       placeholder={placeholder}
       required={required}
-      className="w-full rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
+      className="w-full rounded-md border border-input bg-transparent px-3 py-1 text-white shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
     />
   </div>
 );
@@ -127,7 +127,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Email",
-    content: "hi@wasii.dev",
+    content: "imzeeshannawaz@gmail.com",
   },
   {
     icon: (
@@ -147,7 +147,7 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Phone",
-    content: "+1 (204) 813-2846",
+    content: "+923026626342",
   },
   {
     icon: (
@@ -189,13 +189,13 @@ const CONTACT_INFO = [
       </svg>
     ),
     title: "Office Hours",
-    content: "Monday - Friday: 9am - 5pm (PKT)",
+    content: "Monday - Friday: 9am - 6pm (PKT)",
   },
 ];
 
 const SOCIAL_LINKS = [
   {
-    href: "https://linkedin.com/in/hackerwasii",
+    href: "https://www.linkedin.com/in/imzeeshannawaz",
     label: "LinkedIn",
     icon: (
       <svg
@@ -216,7 +216,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://github.com/evildevill",
+    href: "https://github.com/ZeeshanNawaz6626/",
     label: "GitHub",
     icon: (
       <svg
@@ -236,7 +236,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://facebook.com/hackerwasii",
+    href: "https://www.facebook.com/zeeshan.malik.886928",
     label: "Facebook",
     icon: (
       <svg
@@ -255,7 +255,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://instagram.com/wasii_254",
+    href: "https://instagram.com/zeemalik243",
     label: "Instagram",
     icon: (
       <svg
@@ -276,7 +276,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://www.youtube.com/@hackerwasii?sub_confirmation=1",
+    href: "https://www.youtube.com/",
     label: "YouTube",
     icon: (
       <svg
@@ -296,7 +296,7 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    href: "https://wa.me/+12048132846",
+    href: "https://wa.me/+923026626342",
     label: "WhatsApp",
     icon: (
       <svg
@@ -344,7 +344,7 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-
+  const [successMessage, setSuccessMessage] = useState("");
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -355,17 +355,30 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    // Add form submission logic here
+
+    // Show success message
+    setSuccessMessage("Your message has been sent!");
+
+    // Clear fields
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+
+    // Hide message after 3 seconds
+    setTimeout(() => setSuccessMessage(""), 3000);
   };
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 ">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white py-20 pt-32 dark:bg-slate-950">
-        {/* <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
           <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-        </div> */}
+        </div>
 
         <div className="relative z-10 px-4 md:px-6">
           <div className="mx-auto max-w-7xl">
@@ -419,12 +432,21 @@ export default function ContactPage() {
                       id="name"
                       label="Your Name"
                       placeholder="John Doe"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                     />
+
                     <FormInput
                       id="email"
                       label="Your Email"
                       type="email"
                       placeholder="john@example.com"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                     />
                   </div>
 
@@ -432,6 +454,10 @@ export default function ContactPage() {
                     id="subject"
                     label="Subject"
                     placeholder="How can I help you?"
+                    value={formData.subject}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
                   />
 
                   <div>
@@ -447,9 +473,16 @@ export default function ContactPage() {
                       rows="6"
                       placeholder="Your message here..."
                       required
-                      className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none placeholder:text-muted-foreground dark:bg-input/30 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] md:text-sm"
+                      value={formData.message}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
+                      className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-white shadow-xs"
                     />
                   </div>
+                  {successMessage && (
+                    <p className="text-green-500 text-sm">{successMessage}</p>
+                  )}
 
                   <button
                     type="button"

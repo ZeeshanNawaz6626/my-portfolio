@@ -6,10 +6,10 @@ export default function AboutPage({ isDarkMode }) {
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden  py-20 ">
-          {/* <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -left-1/4 top-0 h-[500px] w-[500px] rounded-full bg-blue-50/50 dark:bg-blue-950/20"></div>
             <div className="absolute -right-1/4 bottom-0 h-[500px] w-[500px] rounded-full bg-purple-50/50 dark:bg-purple-950/20"></div>
-          </div> */}
+          </div>
           <div className="relative z-10 px-4 md:px-6">
             <div className="mx-auto max-w-7xl">
               <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
@@ -117,7 +117,7 @@ export default function AboutPage({ isDarkMode }) {
                       decoding="async"
                       className="object-cover object-top"
                       sizes="100vw"
-                      srcSet="/_next/image?url=%2Fabout.webp&w=640&q=50 640w, /_next/image?url=%2Fabout.webp&w=750&q=50 750w, /_next/image?url=%2Fabout.webp&w=828&q=50 828w, /_next/image?url=%2Fabout.webp&w=1080&q=50 1080w, /_next/image?url=%2Fabout.webp&w=1200&q=50 1200w, /_next/image?url=%2Fabout.webp&w=1920&q=50 1920w, /_next/image?url=%2Fabout.webp&w=2048&q=50 2048w, /_next/image?url=%2Fabout.webp&w=3840&q=50 3840w"
+                      srcSet="/images/1729787557582.jpg"
                       src="/_next/image?url=%2Fabout.webp&w=3840&q=50"
                       style={{
                         position: "absolute",
